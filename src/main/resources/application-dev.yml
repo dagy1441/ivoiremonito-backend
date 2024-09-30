@@ -1,0 +1,45 @@
+application:
+    file:
+        uploads:
+            photos-output-path: ./uploads
+    mailing:
+        frontend:
+            activation-url: http://localhost:4200/activate-account
+    security:
+        jwt:
+            expiration: 86400000
+            refresh-token:
+                expiration: 604800000
+            secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+server:
+    port: 8090
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5433/ivoiremonito_db
+        username: postgres
+        password: admin
+        driver-class-name: org.postgresql.Driver
+
+    jpa:
+        hibernate:
+            ddl-auto: update  # Peut être 'validate', 'update', 'create', 'create-drop' selon vos besoins
+        show-sql: true  # Pour afficher les requêtes SQL dans la console
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+
+    mail:
+        host: localhost
+        password: dagy
+        port: 1025
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    connectiontimeout: 5000
+                    starttls:
+                        enable: true
+                    timeout: 3000
+                    trust: '*'
+                    writetimeout: 5000
+        username: dagy

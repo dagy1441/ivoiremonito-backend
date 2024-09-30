@@ -1,0 +1,17 @@
+package com.ivoiremonito.backend.features.category.controller;
+
+import com.ivoiremonito.backend.core.common.response.ApiResponse;
+import com.ivoiremonito.backend.features.category.model.CategoryRequest;
+import com.ivoiremonito.backend.features.category.model.CategoryResponse;
+import org.springframework.http.ResponseEntity;
+
+import java.util.List;
+
+public interface CategoryEndpoint {
+
+    ResponseEntity<ApiResponse<CategoryResponse>> create(CategoryRequest categoryRequest);
+    ResponseEntity<ApiResponse<CategoryResponse>> update(Long id, CategoryRequest categoryRequest);
+    void delete(Long id);
+    ResponseEntity<ApiResponse<CategoryResponse>> getById(Long id);
+    ResponseEntity<ApiResponse<List<CategoryResponse>>> getAll();
+}
