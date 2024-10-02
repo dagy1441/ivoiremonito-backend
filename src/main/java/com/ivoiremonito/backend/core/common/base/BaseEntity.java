@@ -39,11 +39,12 @@ public class BaseEntity {
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
 
-    @CreatedBy
-    @Column(nullable = false, updatable = false)
-    private Integer createdBy;
-
-    @LastModifiedBy
-    @Column(insertable = false)
-    private Integer lastModifiedBy;
+    // TODO : a decommenter apres la configuration de la securité
+//    @CreatedBy
+//    @Column(nullable = false, updatable = false)
+//    private Integer createdBy;
+//
+//    @LastModifiedBy
+//    @Column(insertable = false)
+//    private Integer lastModifiedBy;
 }

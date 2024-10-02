@@ -17,6 +17,7 @@ public class CategoryMapper {
 
     public Category toEntity(CategoryRequest categoryRequest) {
         return new Category(
+                null,
                 categoryRequest.name(),
                 categoryRequest.description(),
                 categoryRequest.imageUrl()

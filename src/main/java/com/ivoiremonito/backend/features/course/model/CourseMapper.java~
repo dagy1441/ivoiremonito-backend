@@ -1,0 +1,54 @@
+package com.ivoiremonito.backend.features.course.model;
+
+import com.ivoiremonito.backend.features.course.Course;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CourseMapper {
+
+    public Course toEntity(CourseRequest courseRequest) {
+        return new Course(
+                courseRequest.code(),
+                courseRequest.description(),
+                courseRequest.imageUrl(),
+                courseRequest.videoUrl(),
+                courseRequest.pdfUrl(),
+                courseRequest.isFree(),
+                courseRequest.price(),
+                courseRequest.duration(),
+                courseRequest.level(),
+                courseRequest.isActive(),
+                courseRequest.isTop()
+        );
+    }
+
+    public CourseResponse toResponse(Course course) {
+        return new CourseResponse(
+                course.getCode(),
+                course.getDescription(),
+                course.getImageUrl(),
+                course.getVideoUrl(),
+                course.getPdfUrl(),
+                course.isFree(),
+                course.getPrice(),
+                course.getDuration(),
+                course.getLevel(),
+                course.isActive(),
+                course.isTop()
+        );
+    }
+
+    public void updateEntity(Course course, CourseRequest courseRequest) {
+        course.setCode(courseRequest.code());
+        course.setDescription(courseRequest.description());
+        course.setImageUrl(courseRequest.imageUrl());
+        course.setVideoUrl(courseRequest.videoUrl());
+        course.setPdfUrl(courseRequest.pdfUrl());
+        course.setFree(courseRequest.isFree());
+        course.setPrice(courseRequest.price());
+        course.setDuration(courseRequest.duration());
+        course.setLevel(courseRequest.level());
+        course.setActive(courseRequest.isActive());
+        course.setTop(courseRequest.isTop());
+    }
+}

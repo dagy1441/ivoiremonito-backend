@@ -1,0 +1,76 @@
+package com.ivoiremonito.backend.features.course.service;
+
+import com.ivoiremonito.backend.core.common.response.PageResponse;
+import com.ivoiremonito.backend.features.course.Course;
+import com.ivoiremonito.backend.features.course.model.CourseRequest;
+import com.ivoiremonito.backend.features.course.model.CourseResponse;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+
+public interface CourseService {
+    /**
+     * Crée un nouveau cours
+     *
+     * @param courseRequest Informations du cours
+     * @return Le cours créé
+     */
+    CourseResponse create(CourseRequest courseRequest);
+
+    /**
+     * Mise à jour d'un cours
+     *
+     * @param courseRequest Informations du cours
+     * @return Le cours mis à jour
+     */
+    CourseResponse update(CourseRequest courseRequest);
+
+    /**
+     * Recherche un cours par son identifiant
+     *
+     * @param id L'identifiant du cours
+     * @return Le cours correspondant
+     */
+    CourseResponse getById(Long id);
+
+    List<CourseResponse> getAll();
+
+
+    /**
+     * Recherche un cours par son identifiant
+     *
+     * @param id L'identifiant du cours
+     * @return Le cours correspondant
+     */
+    CourseResponse getByCategory(Long id);
+
+    /**
+     * Suppression d'un cours
+     *
+     * @param id L'identifiant du cours
+     */
+    void delete(Long id);
+
+    /**
+     * Recherche de tous les cours
+     *
+     * @return La liste des cours
+     */
+    PageResponse<CourseResponse> findAllCoursesByPage(int page, int size);
+
+    /**
+     * Activation d'un cours
+     *
+     * @param id L'identifiant du cours
+     */
+    void activateCourse(Long id);
+    /**
+     * Change l'etat d'activation d'un cours
+     *
+     * @param id L'identifiant du cours
+     */
+    PageResponse<CourseResponse> getByCategoryIdAndActive(Long id, boolean active, Pageable pageable);
+
+
+}

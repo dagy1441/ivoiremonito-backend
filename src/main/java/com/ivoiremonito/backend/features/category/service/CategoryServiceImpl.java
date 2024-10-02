@@ -1,5 +1,6 @@
 package com.ivoiremonito.backend.features.category.service;
 
+import com.ivoiremonito.backend.core.exception.ResourceNotFoundException;
 import com.ivoiremonito.backend.features.category.domaine.Category;
 import com.ivoiremonito.backend.features.category.model.CategoryMapper;
 import com.ivoiremonito.backend.features.category.model.CategoryRequest;
@@ -29,7 +30,7 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryResponse getById(Long id) {
         log.info("Récupération de la categorie par id {}", id);
 
-        return categoryRepository.findById(id).map(categoryMapper::toResponse).orElse(null);
+        return categoryRepository.findById(id).map(categoryMapper::toResponse).orElseThrow(() -> new ResourceNotFoundException("Categorie non trouvé pour l'ID : " + id));
     }
 
     @Override
@@ -48,6 +49,8 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void delete(Long id) {
         log.info("Suppression d'une categorie : {}", id);
+        Category category = categoryRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Categorie non trouvé pour l'ID : " + id));
         categoryRepository.deleteById(id);
     }
 }
